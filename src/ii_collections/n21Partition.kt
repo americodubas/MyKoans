@@ -10,7 +10,11 @@ fun example8() {
     negative == listOf(-4, -11)
 }
 
+fun Customer.getDeliveredOrders() = orders.filter { it.isDelivered }
+
+fun Customer.getUndeliveredOrders() = orders.filterNot { it.isDelivered }
+
 fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> {
     // Return customers who have more undelivered orders than delivered
-    todoCollectionTask()
+    return customers.filter { it.getUndeliveredOrders().size > it.getDeliveredOrders().size }.toSet()
 }

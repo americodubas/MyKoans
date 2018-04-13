@@ -8,5 +8,9 @@ fun example7() {
 
 fun Shop.groupCustomersByCity(): Map<City, List<Customer>> {
     // Return a map of the customers living in each city
-    todoCollectionTask()
+    val map = HashMap<City, List<Customer>>()
+    getCitiesCustomersAreFrom().forEach {
+        map.put(it, getCustomersFrom(it))
+    }
+    return map
 }
